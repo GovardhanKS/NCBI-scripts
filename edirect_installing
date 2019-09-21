@@ -1,6 +1,6 @@
 #There are staright-forward instructions for edirect installation
 #edirect installation in ubuntu by my experience is the cleanest approach although you can try cygwin similarly
-#
+#the code below is from ncbi Entrez Programming Utilities Help
   cd ~
   /bin/bash
   perl -MNet::FTP -e \
