@@ -1,0 +1,18 @@
+#There are staright-forward instructions for edirect installation
+#edirect installation in ubuntu by my experience is the cleanest approach although you can try cygwin similarly
+#
+  cd ~
+  /bin/bash
+  perl -MNet::FTP -e \
+    '$ftp = new Net::FTP("ftp.ncbi.nlm.nih.gov", Passive => 1);
+     $ftp->login; $ftp->binary;
+     $ftp->get("/entrez/entrezdirect/edirect.tar.gz");'
+  gunzip -c edirect.tar.gz | tar xf -
+  rm edirect.tar.gz
+  builtin exit
+  export PATH=${PATH}:$HOME/edirect >& /dev/null || setenv PATH "${PATH}:$HOME/edirect"
+  ./edirect/setup.sh
+  #after you run setup.sh which will take a while so grab a coffee and make sure you test the edirect is working 
+  #pubmed search for hypertrichosis output will be tabular format
+esearch -db pubmed -query "hypertrichosis"|efetch -format docsum|xtract -pattern DocumentSummary -element Id Title
+#any perl missing modules will pop-up dont freak out
