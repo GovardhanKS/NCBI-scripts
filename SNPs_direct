@@ -1,5 +1,8 @@
-# requirement ncbi edirect installation in ubuntu/cygwin
+# requirements ncbi edirect installation in ubuntu/cygwin
 esearch -db SNP -query "rs121913255"|eftech -format xml|xtract -outline
 # you choose from outline which elements need to grabbed for output example is below
 esearch -db SNP -query "rs121913255"|efetch -format xml|xtract -pattern DocumentSummary -element SNP_ID CHR CHRPOS CLINICAL_SIGNIFICANCE DOCSUM|uniq
 # tabular form of results for the rs121913255, you can replace rs-ids with your id and get the same information
+# going to improvise the code step by step, the code below will save output in a text with rs##.txt
+esearch -db SNP -query "rs121913255"|efetch -format xml|xtract -pattern DocumentSummary -element SNP_ID CHR CHRPOS CLINICAL_SIGNIFICANCE DOCSUM|uniq > rs121913255.txt
+# the idea is to iterate a list of rs-ids from text file and replace the input-id and output-id, run the whole code as a loop and generate a text file with headers - too far fetched?
