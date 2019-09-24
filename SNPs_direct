@@ -2,4 +2,4 @@
 esearch -db SNP -query "rs121913255"|eftech -format xml|xtract -outline
 # you choose from outline which elements need to grabbed for output example is below
 esearch -db SNP -query "rs121913255"|efetch -format xml|xtract -pattern DocumentSummary -element SNP_ID CHR CHRPOS CLINICAL_SIGNIFICANCE DOCSUM|uniq
-# tabular form of results for the rs121913255
+# tabular form of results for the rs121913255, you can replace rs-ids with your id and get the same information
